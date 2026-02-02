@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.pytest_cache/
+
+# Node.js
+node_modules/
+package-lock.json
+coverage/
+
+# System
+.DS_Store

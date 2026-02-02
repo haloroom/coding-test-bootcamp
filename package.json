@@ -1,0 +1,11 @@
+{
+  "name": "coding-test-bootcamp",
+  "version": "1.0.0",
+  "description": "Algorithm Study with Auto-Test",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
