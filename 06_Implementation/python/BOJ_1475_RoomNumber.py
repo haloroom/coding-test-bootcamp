@@ -1,21 +1,40 @@
 import sys
 
+"""
+Problem: Room Number (BOJ 1475)
+Description: 
+다솜이는 은진이의 옆집에 새로 이사왔다. 다솜이는 자기 방 번호를 플라스틱 세트로 문에 붙이려고 한다. 
+한 세트에는 0번부터 9번까지 숫자가 하나씩 들어있다. 
+6은 9를 뒤집어서 이용할 수 있고, 9는 6을 뒤집어서 이용할 수 있다.
+방 번호가 주어졌을 때, 필요한 세트의 개수의 최솟값을 출력하시오.
+
+Example Input:
+9999
+"""
+
+def solve(room_number_str):
+    """
+    Args:
+        room_number_str (str): 방 번호 문자열
+    Returns:
+        int: 필요한 세트 개수
+    """
+    count = [0] * 10
+    for char in room_number_str:
+        num = int(char)
+        if num == 9: 
+            num = 6
+        count[num] += 1
+        
+    count[6] = (count[6] + 1) // 2
+    
+    return max(count)
+
 def solution():
     try:
         line = sys.stdin.readline().strip()
         if not line: return
-        
-        count = [0] * 10
-        for char in line:
-            num = int(char)
-            if num == 9: # 9는 6으로 취급
-                num = 6
-            count[num] += 1
-            
-        # 6과 9는 서로 호환 가능하므로 합쳐서 2로 나눔 (올림)
-        count[6] = (count[6] + 1) // 2
-        
-        print(max(count))
+        print(solve(line))
     except ValueError:
         pass
 

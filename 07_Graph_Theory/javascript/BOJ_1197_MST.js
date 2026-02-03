@@ -1,5 +1,17 @@
 const fs = require('fs');
 
+/**
+ * Problem: Minimum Spanning Tree (BOJ 1197)
+ * Description: 
+ * 그래프의 최소 스패닝 트리(MST) 가중치 합을 구하시오.
+ * 
+ * Example Input:
+ * 3 3
+ * 1 2 1
+ * 2 3 2
+ * 1 3 3
+ */
+
 function findParent(parent, x) {
   if (parent[x] !== x) {
     parent[x] = findParent(parent, parent[x]);
@@ -12,6 +24,22 @@ function unionParent(parent, a, b) {
   const rootB = findParent(parent, b);
   if (rootA < rootB) parent[rootB] = rootA;
   else parent[rootA] = rootB;
+}
+
+function solve(V, E, edges) {
+  // edges: {cost, a, b} 객체 배열
+  edges.sort((x, y) => x.cost - y.cost);
+  
+  const parent = Array.from({ length: V + 1 }, (_, i) => i);
+  let result = 0;
+  
+  for (const edge of edges) {
+    if (findParent(parent, edge.a) !== findParent(parent, edge.b)) {
+      unionParent(parent, edge.a, edge.b);
+      result += edge.cost;
+    }
+  }
+  return result;
 }
 
 function solution() {
@@ -30,19 +58,7 @@ function solution() {
       edges.push({ cost, a, b });
     }
     
-    edges.sort((x, y) => x.cost - y.cost);
-    
-    const parent = Array.from({ length: V + 1 }, (_, i) => i);
-    let result = 0;
-    
-    for (const edge of edges) {
-      if (findParent(parent, edge.a) !== findParent(parent, edge.b)) {
-        unionParent(parent, edge.a, edge.b);
-        result += edge.cost;
-      }
-    }
-    
-    console.log(result);
+    console.log(solve(V, E, edges));
   } catch (e) {}
 }
 
