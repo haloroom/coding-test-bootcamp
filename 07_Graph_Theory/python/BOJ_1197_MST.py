@@ -2,49 +2,33 @@ import sys
 
 """
 Problem: Minimum Spanning Tree (BOJ 1197)
-Description: 
+
+Detailed Description:
 그래프가 주어졌을 때, 그 그래프의 최소 스패닝 트리를 구하는 프로그램을 작성하시오.
+최소 스패닝 트리란, 주어진 그래프의 모든 정점들을 연결하는 부분 그래프 중에서 그 가중치의 합이 최소인 트리를 말한다.
+(입력으로 주어지는 그래프는 정점이 V개, 간선이 E개이다.)
 
 Example Input:
 3 3
 1 2 1
 2 3 2
 1 3 3
+
+Example Output:
+3
 """
-
-def find_parent(parent, x):
-    if parent[x] != x:
-        parent[x] = find_parent(parent, parent[x])
-    return parent[x]
-
-def union_parent(parent, a, b):
-    a = find_parent(parent, a)
-    b = find_parent(parent, b)
-    if a < b:
-        parent[b] = a
-    else:
-        parent[a] = b
 
 def solve(V, E, edges):
     """
     Args:
         V (int): 정점 개수
         E (int): 간선 개수
-        edges (list): (cost, a, b) 튜플 리스트
+        edges (list): (cost, a, b) 튜플 리스트 (List of Tuples)
     Returns:
         int: MST 가중치 합
     """
-    edges.sort()
-    parent = [i for i in range(V + 1)]
-    result = 0
-    
-    for edge in edges:
-        cost, a, b = edge
-        if find_parent(parent, a) != find_parent(parent, b):
-            union_parent(parent, a, b)
-            result += cost
-            
-    return result
+    # TODO: Implement your solution here
+    pass
 
 def solution():
     try:

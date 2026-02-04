@@ -2,7 +2,8 @@ import sys
 
 """
 Problem: Make One (BOJ 1463)
-Description: 
+
+Detailed Description:
 정수 X에 사용할 수 있는 연산은 다음과 같이 세 가지 이다.
 1. X가 3으로 나누어 떨어지면, 3으로 나눈다.
 2. X가 2로 나누어 떨어지면, 2로 나눈다.
@@ -12,6 +13,9 @@ Description:
 
 Example Input:
 10
+
+Example Output:
+3
 """
 
 def solve(N):
@@ -21,16 +25,8 @@ def solve(N):
     Returns:
         int: 연산 횟수의 최솟값
     """
-    dp = [0] * (N + 1)
-    
-    for i in range(2, N + 1):
-        dp[i] = dp[i-1] + 1
-        if i % 2 == 0:
-            dp[i] = min(dp[i], dp[i//2] + 1)
-        if i % 3 == 0:
-            dp[i] = min(dp[i], dp[i//3] + 1)
-            
-    return dp[N]
+    # TODO: Implement your solution here
+    pass
 
 def solution():
     try:
