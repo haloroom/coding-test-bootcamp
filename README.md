@@ -12,6 +12,7 @@
 
 | # | Topic | Description | Link |
 |:-:|:---|:---|:---:|
+| 00 | **Cheatsheet** | 언어별 문법 및 팁 정리 | [Go](./00_Cheatsheet/) |
 | 01 | **Greedy** | 탐욕적 선택 속성, 정렬, 우선순위 큐 | [Go](./01_Greedy/) |
 | 02 | **DFS / BFS** | 그래프 탐색, 스택/큐, 재귀 | [Go](./02_DFS_BFS/) |
 | 03 | **DP** | 동적 계획법, 메모이제이션, 점화식 | [Go](./03_Dynamic_Programming/) |
@@ -27,7 +28,7 @@
 
 이 저장소는 로컬에서 테스트 케이스를 검증할 수 있는 환경을 제공합니다.
 
-### 🐍 Python
+### 🐍 Python (Pytest)
 **요구사항:** Python 3.8+
 
 1. **의존성 설치**
@@ -35,17 +36,30 @@
    pip install -r requirements.txt
    ```
 
-2. **테스트 실행**
-   * 전체 테스트 실행:
+2. **테스트 실행 방법**
+   * **전체 테스트 실행:**
      ```bash
      pytest
      ```
-   * 특정 카테고리/파일 테스트 (예: 01_Greedy):
+   * **특정 폴더 실행:**
      ```bash
      pytest 01_Greedy/
      ```
+   * **특정 파일 실행:**
+     ```bash
+     pytest 01_Greedy/python/test_coin0.py
+     ```
+   * **특정 테스트 함수만 실행:** (파일명 뒤에 `::함수명` 추가)
+     ```bash
+     pytest 01_Greedy/python/test_coin0.py::test_coin0_case1
+     ```
+   * **키워드 검색 실행:** (`-k` 옵션)
+     ```bash
+     # 이름에 'coin'이 포함된 테스트만 실행
+     pytest -k coin
+     ```
 
-### 🟨 JavaScript (Node.js)
+### 🟨 JavaScript (Jest)
 **요구사항:** Node.js, NPM
 
 1. **의존성 설치**
@@ -53,14 +67,23 @@
    npm install
    ```
 
-2. **테스트 실행**
-   * 전체 테스트 실행:
+2. **테스트 실행 방법**
+   * **전체 테스트 실행:**
      ```bash
      npm test
      ```
-   * 특정 파일 테스트 (Jest 패턴 매칭):
+   * **특정 파일/폴더 실행:** (경로 또는 파일명 일부 입력)
      ```bash
-     npm test Coin0
+     # 01_Greedy 폴더 내의 테스트 실행
+     npm test 01_Greedy
+     
+     # 파일명에 'Coin'이 들어가는 테스트 실행
+     npm test Coin
+     ```
+   * **특정 테스트 이름 실행:** (`-t` 옵션)
+     ```bash
+     # 'Example 1'이라는 이름의 테스트 케이스만 실행
+     npm test -- -t "Example 1"
      ```
 
 ---
