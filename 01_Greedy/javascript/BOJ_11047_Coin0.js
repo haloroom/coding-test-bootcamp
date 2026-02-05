@@ -48,13 +48,6 @@ function solve(N, K, coins) {
 
     if(total === 0) break;
   }
-  // coins.reverse().forEach(coin => {
-  //   if(coin <= total) {
-  //     const divid = Math.floor(total/coin);
-  //     result += divid;
-  //     total -= coin * divid;
-  //   }
-  // })
 
   return result;
 }
